@@ -1,0 +1,165 @@
+name: Osano SDK Bug Report (Android)
+description: File a bug report for the Osano Android SDK.
+title: "[Bug][Android]: "
+labels:
+  - bug
+  - needs-triage
+  - android
+
+body:
+  - type: markdown
+    id: header
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report.
+
+        **Security notice**
+        - Do **not** include secrets, API keys, tokens, private URLs, session IDs, or PII in logs/screenshots.
+        - If this is a security vulnerability, please **do not** file it here. Use the repository’s security reporting process instead.
+
+        This form is customer-facing. Internal SLA / Jira priority terminology is not shown, but we will use your inputs to triage internally.
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity (customer-facing)
+      description: Select the option that best matches the impact. (Internal priority is mapped from this.)
+      options:
+        - Major functionality not working (e.g., crash caused by the SDK)
+        - Minor issue / workaround available
+    validations:
+      required: true
+
+  - type: dropdown
+    id: sdk-version
+    attributes:
+      label: SDK Version
+      description: Select the SDK version you are using. If not listed, choose "Other" and specify below.
+      options:
+        - 4.3.3
+        - 4.3.2
+        - 4.3.1
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: input
+    id: sdk-version-other
+    attributes:
+      label: If "Other", specify the exact SDK version
+      placeholder: "e.g., 4.2.9"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: android-version
+    attributes:
+      label: Android OS / API Level
+      description: Select the Android version where you observed the issue.
+      options:
+        - 23 (Android 6)
+        - 24 (Android 7.0)
+        - 25 (Android 7.1.1)
+        - 26 (Android 8)
+        - 27 (Android 8.1)
+        - 28 (Android 9)
+        - 29 (Android 10)
+        - 30 (Android 11)
+        - 31 (Android 12)
+        - 32 (Android 12L)
+        - 33 (Android 13)
+        - 34 (Android 14)
+        - 35 (Android 15)
+        - 36 (Android 16)
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: Device model(s)
+      description: Which device(s) or emulator did you use?
+      placeholder: "e.g., Pixel 7 Pro, Samsung S22, Android Emulator"
+    validations:
+      required: true
+
+  - type: input
+    id: gradle-version
+    attributes:
+      label: Gradle Version
+      description: The Gradle version used to build the project.
+      placeholder: "e.g., 8.2.1"
+    validations:
+      required: true
+
+  - type: input
+    id: kotlin-version
+    attributes:
+      label: Kotlin Version
+      description: The Kotlin version used in your project.
+      placeholder: "e.g., 1.9.24"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Provide exact steps so we can reproduce the issue.
+      placeholder: |
+        1. Initialize the SDK with configuration X
+        2. Call `showAsDialog()`
+        3. Observe crash when Y happens
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+      placeholder: "The SDK should complete initialization without crashing."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual behavior
+      description: What actually happened?
+      placeholder: "The app crashes with NullPointerException."
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / stacktrace (redacted)
+      description: |
+        Paste relevant logs or crash stacktrace here. Redact secrets/PII.
+        If you cannot provide logs, write "N/A" and explain why in Additional context.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add screenshots, a minimal repro repo link, or anything else that helps.
+      placeholder: |
+        - Minimal repro repo (if available):
+        - Does this reproduce on a clean sample project?
+        - Any workaround found?
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I removed secrets/PII from logs and screenshots.
+          required: true
+        - label: I searched existing issues to avoid duplicates.
+          required: false
