@@ -23,8 +23,8 @@ jobs:
           const issue = event.issue || {};
           const body = (issue.body || "").replace(/\r\n/g, "\n");
 
-          // Map your FIELD IDs -> the *label text* that becomes "### <label>" in the issue body.
-          // If you change labels in the issue form, update these strings.
+          // Map your FIELD IDs to the exact label text from the issue template.
+          // These become "### <label>" headings in the generated issue body. If you change labels in android_sdk_bug.yml, update these strings.
           const fields = [
             { id: "severity", label: "Severity (customer-facing)" },
             { id: "sdk-version", label: "SDK Version" },
