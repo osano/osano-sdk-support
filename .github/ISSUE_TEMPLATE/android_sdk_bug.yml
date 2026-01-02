@@ -4,7 +4,6 @@ title: "[Bug][Android]: "
 labels:
   - bug
   - needs-triage
-  - android
 
 body:
   - type: markdown
@@ -15,9 +14,6 @@ body:
 
         **Security notice**
         - Do **not** include secrets, API keys, tokens, private URLs, session IDs, or PII in logs/screenshots.
-        - If this is a security vulnerability, please **do not** file it here. Use the repository’s security reporting process instead.
-
-        This form is customer-facing. Internal SLA / Jira priority terminology is not shown, but we will use your inputs to triage internally.
 
   - type: dropdown
     id: severity
