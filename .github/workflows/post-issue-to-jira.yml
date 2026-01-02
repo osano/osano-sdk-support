@@ -1,0 +1,42 @@
+name: GitHub Issue -> Jira
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo (to read the issue form template)
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install parser dependency
+        run: npm i --no-save @github/issue-parser
+
+      - name: Create Jira ticket and comment back
+        env:
+          # GitHub
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          # Path to your form template in this repo:
+          ISSUE_TEMPLATE_PATH: .github/ISSUE_TEMPLATE/android_sdk_bug.yml
+
+          # Jira
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          JIRA_PROJECT_KEY: SDK
+          JIRA_ISSUE_TYPE: Bug
+
+        run: node scripts/github-issue-to-jira.mjs
