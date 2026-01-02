@@ -136,7 +136,7 @@ body:
         If you cannot provide logs, write "N/A" and explain why in Additional context.
       render: shell
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: additional-context
