@@ -1,0 +1,17 @@
+name: Call Validate PR reusable workflow
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: read
+
+jobs:
+  validate:
+    uses: 'osano/automate-jira-releases/.github/workflows/validate-pr.yml@main'
+    with:
+      head_sha: ${{ github.event.pull_request.head.sha }}
+    secrets: inherit
